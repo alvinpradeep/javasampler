@@ -13,20 +13,20 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 public class js1 extends AbstractJavaSamplerClient {
-
+	BufferedReader	inputStream ;
     @Override
     public void setupTest(JavaSamplerContext context) {
         super.setupTest(context);
        
 //        
-//        try {
-//        	File f = new File("C:\\fixfiles\\f2.fix.txt");
-//    		BufferedReader	inputStream = new BufferedReader(new FileReader(f));
-//    		// Put in the context of thread group
-//    	    JMeterContextService.getContext().getVariables().putObject("inputStream", inputStream);
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
+        try {
+        	File f = new File("C:\\fixfiles\\f2.fix.txt");
+    			inputStream = new BufferedReader(new FileReader(f));
+    		// Put in the context of thread group
+    	    JMeterContextService.getContext().getVariables().putObject("inputStream", inputStream);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
 	// public Arguments getDefaultParameters() {
@@ -47,13 +47,13 @@ public class js1 extends AbstractJavaSamplerClient {
 
 	}
 
-	@Override
 	public SampleResult runTest(JavaSamplerContext javaSamplerContext) {
 		
 		final SampleResult sampleResult = new SampleResult();
 
 		sampleResult.sampleStart();
-		BufferedReader inputStream = (BufferedReader) JMeterContextService.getContext().getVariables().getObject("inputStream");
+		
+		//BufferedReader inputStream = (BufferedReader) JMeterContextService.getContext().getVariables().getObject("inputStream");
 		// String fixmsg = javaSamplerContext.getParameter("fixmessage");
 		// File f = new File("C:\\fixfiles\\f2.fix.txt");
 		// if(f.isFile()) {
